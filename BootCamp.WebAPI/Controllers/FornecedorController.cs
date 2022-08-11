@@ -1,4 +1,5 @@
 ﻿using BootCamp.WebAPI.Dal.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace BootCamp.WebAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "employee")]
         public Task<List<Model.Fornecedor>> Get()
         {
             return _fornecedor.GetForncedores();
